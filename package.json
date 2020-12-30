@@ -1,0 +1,17 @@
+{
+  "name": "order-game",
+  "version": "1.0.0",
+  "description": "A mini game that consists of clicking numbers in the order requested",
+  "repository": "https://github.com/silash35/order-game.git",
+  "author": "Silas Henrique <silash35@gmail.com>",
+  "license": "Unlicense",
+  "private": true,
+  "scripts": {
+    "test": "jest"
+  },
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ]
+  }
+}

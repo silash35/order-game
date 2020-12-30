@@ -1,0 +1,23 @@
+{
+  "name": "@order-game/server",
+  "version": "1.0.0",
+  "description": "The Backend from the Order-Game",
+  "main": "src/index.js",
+  "repository": "https://github.com/silash35/order-game.git",
+  "author": "Silas Henrique <silash35@gmail.com>",
+  "license": "Unlicense",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "eslint": "^7.16.0",
+    "eslint-config-prettier": "^7.1.0",
+    "eslint-plugin-prettier": "^3.3.0",
+    "prettier": "^2.2.1"
+  }
+}
