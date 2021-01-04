@@ -31,12 +31,10 @@ module.exports = {
     ],
   },
   plugins: [
+    new CopyPlugin({ patterns: [{ from: "static", to: "./" }] }),
     new HtmlWebpackPlugin({ template: "./src/index.html" }),
-    new CleanWebpackPlugin(),
     new MiniCssExtractPlugin(),
-    new CopyPlugin({
-      patterns: [{ from: "static", to: "./" }],
-    }),
+    new CleanWebpackPlugin(),
   ],
   devServer: {
     contentBase: path.join(__dirname, "dist"),
