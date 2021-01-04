@@ -1,3 +1,11 @@
-import "./style.scss";
+import ReactDOM from "react-dom";
+import React from "react";
 
-window.alert("oi");
+ReactDOM.render(
+  <>
+    <h1>Oi</h1>
+    <p>Testando</p>
+  </>,
+
+  document.querySelector("#root")
+);

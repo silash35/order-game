@@ -6,11 +6,12 @@
     "ecmaVersion": 12,
     "sourceType": "module",
     "ecmaFeatures": {
-      "impliedStrict": true
+      "impliedStrict": true,
+      "jsx": true
     }
   },
-  "extends": ["plugin:prettier/recommended"],
-  "plugins": ["prettier"],
+  "extends": ["plugin:prettier/recommended", "plugin:react/recommended"],
+  "plugins": ["prettier", "react"],
   "rules": {
     "prettier/prettier": "error",
     "spaced-comment": "error"
