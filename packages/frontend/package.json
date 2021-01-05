@@ -1,5 +1,5 @@
 {
-  "name": "@order-game/web",
+  "name": "@order-game/frontend",
   "version": "1.0.0",
   "description": "The Frontend from the Order-Game",
   "main": "src/index.js",
@@ -9,7 +9,7 @@
   "private": true,
   "scripts": {
     "dev": "webpack serve",
-    "build": "webpack"
+    "start": "webpack"
   },
   "dependencies": {
     "react": "^17.0.1",

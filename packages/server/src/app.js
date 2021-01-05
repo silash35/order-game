@@ -3,7 +3,7 @@ import bodyParser from "body-parser";
 import { get } from "./routes/api/order.js";
 
 const app = express();
-app.use(express.static("src/public"));
+app.use(express.static("dist"));
 app.use(bodyParser.json());
 
 // Routes
