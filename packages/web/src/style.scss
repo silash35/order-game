@@ -3,24 +3,25 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  margin: 0;
 
-  background-color: #11b4ff;
+  background-image: linear-gradient(30deg, #1151ff, #11b4ff);
 }
 
 .board {
-  display: grid;
-  grid-template-columns: auto auto auto auto auto;
-  grid-auto-rows: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 20px;
   padding: 20px;
-  width: 90vw;
-  height: 50vh;
+  width: 80vw;
+  height: 60vh;
 
   background-color: gray;
   border: 5px solid black;
   border-radius: 7px;
 
-  @media screen and (max-width: 800px) {
-    grid-template-columns: auto auto auto;
+  @media (orientation: portrait) {
+    height: 80vh;
   }
 }
