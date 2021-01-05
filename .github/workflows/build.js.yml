@@ -28,9 +28,9 @@ jobs:
     - run: npm install yarn
     - run: yarn install
     - run: cd packages/frontend && yarn start
-    - uses: swinton/commit@v2.0.0
+    - name: Git Auto Commit
+      uses: stefanzweifel/git-auto-commit-action@v4.8.0
       with:
-        files: 
-         .
-        commit-message: 
-          "rebuild frontend"
+        commit_message: Rebuild frontend
+        branch: master
+        file_pattern: .
