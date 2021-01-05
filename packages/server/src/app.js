@@ -1,11 +1,12 @@
 import express from "express";
 import bodyParser from "body-parser";
-import home from "./routes/home.js";
+import { get } from "./routes/api/order.js";
 
 const app = express();
+app.use(express.static("src/public"));
 app.use(bodyParser.json());
 
 // Routes
-app.get("/", home);
+app.get("/api/order", get);
 
 export default app;
