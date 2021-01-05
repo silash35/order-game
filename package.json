@@ -7,7 +7,7 @@
   "license": "Unlicense",
   "private": true,
   "scripts": {
-    "start": "node packages/server/src/index.js",
+    "start": " cd packages/server/ && yarn start",
     "test": "jest"
   },
   "workspaces": {
