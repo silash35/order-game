@@ -6,21 +6,37 @@
   flex-basis: calc(20% - 20px);
   margin: 20px;
 
-  background-color: #ffffff;
   border-radius: inherit;
   box-shadow: 0px 6px 0px 0px #301a6b;
   margin: 0 0 6px;
+  transition: opacity 300ms;
 
   @media (orientation: portrait) {
     flex-basis: calc(33% - 20px);
   }
 
-  &:hover {
-    background-color: #ac8eff;
-  }
-
   &:active {
     box-shadow: 0px 1px 0px 0px #301a6b;
     margin: 4px 0 2px;
+  }
+}
+
+.loading {
+  background-color: yellow;
+}
+
+.wrong {
+  background-color: red;
+}
+
+.right {
+  opacity: 0;
+  background-color: green;
+}
+
+.none {
+  background-color: #ffffff;
+  &:hover {
+    background-color: #ac8eff;
   }
 }
