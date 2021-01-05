@@ -6,8 +6,8 @@ name: Node.js CI
 on:
   push:
     branches: [ master ]
-  pull_request:
-    branches: [ master ]
+    paths:
+      - 'packages/web/**'
 
 jobs:
   build:
@@ -25,7 +25,7 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: npm install yarn
+    - run: npm install -g yarn
     - run: yarn install
     - run: cd packages/frontend && yarn start
     - name: Git Auto Commit
