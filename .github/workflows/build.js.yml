@@ -28,3 +28,9 @@ jobs:
     - run: npm install yarn
     - run: yarn install
     - run: cd packages/frontend && yarn start
+    - uses: swinton/commit@v2.0.0
+      with:
+        files: 
+         .
+        commit-message: 
+          "rebuild frontend"
