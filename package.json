@@ -7,8 +7,8 @@
   "license": "Unlicense",
   "private": true,
   "scripts": {
-    "start": "yarn workspaces run start",
-    "test": "yarn workspaces run jest"
+    "start": "node packages/server/src/index.js",
+    "test": "jest"
   },
   "workspaces": {
     "packages": [
