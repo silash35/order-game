@@ -7,7 +7,7 @@
   "license": "Unlicense",
   "private": true,
   "scripts": {
-    "start": " cd packages/server/ && yarn start && npm start",
+    "start": "cd packages/server/ && yarn start",
     "test": "jest"
   },
   "workspaces": {
