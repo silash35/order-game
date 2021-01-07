@@ -3,6 +3,7 @@ import BoardButtons from "./components/BoardButtons";
 
 const App = () => {
   const seq = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  fetch("/api/order").body;
   const numbers = [];
   seq.forEach((n) => {
     numbers.push(<BoardButtons number={n} />);
