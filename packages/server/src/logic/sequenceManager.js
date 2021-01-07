@@ -1,6 +1,6 @@
-const generate = (start = 1, end = 10) => {
+const generate = (length = 10) => {
   let sequence = [];
-  for (let i = start; i <= end; i++) {
+  for (let i = 1; i <= length; i++) {
     sequence.push(i);
   }
 
@@ -22,4 +22,15 @@ const shuffle = (array = seq()) => {
   return array;
 };
 
-export { generate, shuffle };
+const isOrdered = (array) => {
+  const orderedArray = generate(array.length);
+
+  for (var i = 0; i < orderedArray.length; i++) {
+    if (orderedArray[i] !== array[i]) {
+      return false;
+    }
+  }
+  return true;
+};
+
+export { generate, shuffle, isOrdered };
