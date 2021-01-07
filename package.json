@@ -6,6 +6,7 @@
   "author": "Silas Henrique <silash35@gmail.com>",
   "license": "Unlicense",
   "private": true,
+  "browserslist": "> 0.25%, not dead",
   "scripts": {
     "build": "cd packages/web/ && yarn build",
     "start": "cd packages/server/ && yarn start",
