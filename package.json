@@ -7,7 +7,7 @@
   "license": "Unlicense",
   "private": true,
   "scripts": {
-    "prestart": "cd packages/web/ && yarn build",
+    "build": "cd packages/web/ && yarn build",
     "start": "cd packages/server/ && yarn start",
     "predev": "cd packages/web/ && yarn build",
     "dev": "cd packages/server/ && yarn dev",
