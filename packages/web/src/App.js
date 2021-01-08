@@ -1,20 +1,8 @@
 import React from "react";
-import StartGame from "./components/StartGame";
-import BoardButtons from "./components/BoardButtons";
+import Board from "./components/Board";
 
 const App = () => {
-  const [seq, setSeq] = React.useState(false);
-  const buttons = [];
-
-  if (seq === false) {
-    buttons.push(<StartGame setSeq={setSeq} />);
-  } else {
-    seq.forEach((n) => {
-      buttons.push(<BoardButtons number={n} />);
-    });
-  }
-
-  return <article className="board">{buttons}</article>;
+  return <Board />;
 };
 
 export default App;
