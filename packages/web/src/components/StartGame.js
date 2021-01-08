@@ -3,16 +3,32 @@ import style from "./StartGame.module.scss";
 
 const StartGame = (props) => {
   const handleClick = () => {
+    props.setUserOrder([]);
+
     fetch("/api/order")
       .then((res) => res.json())
       .then((res) => {
-        props.setSeq(res.randomSequence);
+        props.setOrder(res.randomSequence);
+        props.gameState.set("playing");
       });
   };
 
+  let text;
+  switch (props.gameState.value) {
+    case "victory":
+      text = "You Win! Play Again?";
+      break;
+    case "lost":
+      text = "You Lose. Play Again?";
+      break;
+    default:
+      text = "Start Game";
+      break;
+  }
+
   return (
     <button onClick={handleClick} className={style.button}>
-      Start Game
+      {text}
     </button>
   );
 };

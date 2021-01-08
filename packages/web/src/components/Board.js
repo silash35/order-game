@@ -4,22 +4,29 @@ import BoardButtons from "./BoardButtons";
 import style from "./Board.module.scss";
 
 const Board = () => {
-  const [seq, setSeq] = React.useState(false);
-  const [userSeq, setUserSeq] = React.useState([]);
-  const buttons = [];
+  const [order, setOrder] = React.useState([]);
+  const [userOrder, setUserOrder] = React.useState([]);
+  const [gameState, setGameState] = React.useState("default"); // default, playing, victory or lost
 
-  if (seq === false) {
-    buttons.push(<StartGame setSeq={setSeq} />);
-  } else {
-    seq.forEach((n) => {
+  const buttons = [];
+  if (gameState == "playing") {
+    order.forEach((n) => {
       buttons.push(
         <BoardButtons
           number={n}
-          userSeq={{ value: userSeq, set: setUserSeq }}
-          setSeq={setSeq}
+          userOrder={{ value: userOrder, set: setUserOrder }}
+          setGameState={setGameState}
         />
       );
     });
+  } else {
+    buttons.push(
+      <StartGame
+        gameState={{ value: gameState, set: setGameState }}
+        setOrder={setOrder}
+        setUserOrder={setUserOrder}
+      />
+    );
   }
 
   return <article className={style.board}>{buttons}</article>;

@@ -7,11 +7,11 @@ const BoardButtons = (props) => {
   const handleClick = () => {
     setStatus("loading");
 
-    props.userSeq.value = [].concat(props.userSeq.value, [props.number]);
+    props.userOrder.value = [].concat(props.userOrder.value, [props.number]);
     fetch("/api/order", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(props.userSeq.value),
+      body: JSON.stringify(props.userOrder.value),
     })
       .then((res) => res.json())
       .then(({ isOrdered }) => {
@@ -19,11 +19,11 @@ const BoardButtons = (props) => {
           setStatus("right");
         } else {
           setStatus("wrong");
-          props.setSeq(false);
+          props.setGameState("lost");
         }
       });
 
-    props.userSeq.set(props.userSeq.value);
+    props.userOrder.set(props.userOrder.value);
   };
 
   return (
