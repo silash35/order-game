@@ -1,6 +1,6 @@
-import app from "./app.js";
-const PORT = process.env.PORT || 3000;
+import http from "./app.js";
+const PORT = process.env.PORT || 9000;
 
-app.listen(PORT, () => {
+http.listen(PORT, () => {
   console.log(`App listening at http://localhost:${PORT}`);
 });

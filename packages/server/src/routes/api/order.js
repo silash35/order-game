@@ -1,4 +1,4 @@
-import { generate, shuffle, isOrdered } from "../../logic/sequenceManager.js";
+import { generate, isOrdered, shuffle } from "../../logic/sequenceManager.js";
 
 const get = (req, res) => {
   let randomSequence = shuffle(generate());
