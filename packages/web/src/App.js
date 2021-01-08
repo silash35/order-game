@@ -1,20 +1,13 @@
 import React from "react";
+import StartGame from "./components/StartGame";
 import BoardButtons from "./components/BoardButtons";
 
 const App = () => {
   const [seq, setSeq] = React.useState(false);
   const buttons = [];
 
-  const getSeq = () => {
-    fetch("/api/order")
-      .then((res) => res.json())
-      .then((res) => {
-        setSeq(res.randomSequence);
-      });
-  };
-
   if (seq === false) {
-    buttons.push(<button onClick={getSeq}>Start Game</button>);
+    buttons.push(<StartGame setSeq={setSeq} />);
   } else {
     seq.forEach((n) => {
       buttons.push(<BoardButtons number={n} />);
