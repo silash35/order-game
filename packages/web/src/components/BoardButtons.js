@@ -14,9 +14,12 @@ const BoardButtons = (props) => {
       body: JSON.stringify(props.userOrder.value),
     })
       .then((res) => res.json())
-      .then(({ isOrdered }) => {
+      .then(({ isOrdered, isComplete }) => {
         if (isOrdered) {
           setStatus("right");
+          if (isComplete) {
+            props.setGameState("victory");
+          }
         } else {
           setStatus("wrong");
           props.setGameState("lost");

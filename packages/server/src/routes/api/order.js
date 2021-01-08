@@ -10,6 +10,7 @@ const get = (req, res) => {
 const post = (req, res) => {
   res.status(200).send({
     isOrdered: isOrdered(req.body),
+    isComplete: generate().length == req.body.length,
   });
 };
 
