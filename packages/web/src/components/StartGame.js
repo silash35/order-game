@@ -3,13 +3,12 @@ import React from "react";
 import style from "./StartGame.module.scss";
 
 const StartGame = (props) => {
-  socket.on("get sequence", ({ seq }) => {
+  socket.on("sequence", ({ seq }) => {
     props.setOrder(seq);
   });
 
   const handleClick = () => {
-    props.setUserOrder([]);
-    socket.emit("start game");
+    socket.emit("game started");
     props.gameState.set("playing");
   };
 

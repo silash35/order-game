@@ -5,31 +5,24 @@ import style from "./BoardButtons.module.scss";
 const BoardButtons = (props) => {
   const [status, setStatus] = React.useState("none"); // loading, none, right or wrong
 
+  socket.on("game changed", ({ lastNumber, isOrdered, isComplete }) => {
+    if (lastNumber == props.number) {
+      if (isOrdered) {
+        setStatus("right");
+        if (isComplete) {
+          props.setGameState("victory");
+        }
+      } else {
+        setStatus("wrong");
+        props.setGameState("lost");
+      }
+    }
+  });
+
   const handleClick = () => {
     setStatus("loading");
 
-    // socket.emit("number pressed", props.number);
-
-    props.userOrder.value = [].concat(props.userOrder.value, [props.number]);
-    fetch("/api/order", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(props.userOrder.value),
-    })
-      .then((res) => res.json())
-      .then(({ isOrdered, isComplete }) => {
-        if (isOrdered) {
-          setStatus("right");
-          if (isComplete) {
-            props.setGameState("victory");
-          }
-        } else {
-          setStatus("wrong");
-          props.setGameState("lost");
-        }
-      });
-
-    props.userOrder.set(props.userOrder.value);
+    socket.emit("number pressed", props.number);
   };
 
   return (

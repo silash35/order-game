@@ -3,7 +3,6 @@ import express from "express";
 import { createServer } from "http";
 import { Server } from "socket.io";
 
-import { get, post } from "./routes/api/order.js";
 import { connection } from "./socket/listeners.js";
 
 // Init
@@ -13,11 +12,6 @@ const io = new Server(httpServer, {});
 
 // Config
 app.use(express.static("public"));
-app.use(bodyParser.json());
-
-// HTTP
-app.get("/api/order", get);
-app.post("/api/order", post);
 
 // Web Sockets
 io.on("connection", connection);
