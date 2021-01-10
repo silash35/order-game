@@ -1,16 +1,16 @@
 import React from "react";
+
 import style from "./StartGame.module.scss";
 
 const StartGame = (props) => {
+  socket.on("get sequence", ({ seq }) => {
+    props.setOrder(seq);
+  });
+
   const handleClick = () => {
     props.setUserOrder([]);
-
-    fetch("/api/order")
-      .then((res) => res.json())
-      .then((res) => {
-        props.setOrder(res.randomSequence);
-        props.gameState.set("playing");
-      });
+    socket.emit("start game");
+    props.gameState.set("playing");
   };
 
   let text;

@@ -1,4 +1,5 @@
 import React from "react";
+
 import style from "./BoardButtons.module.scss";
 
 const BoardButtons = (props) => {
@@ -6,6 +7,8 @@ const BoardButtons = (props) => {
 
   const handleClick = () => {
     setStatus("loading");
+
+    // socket.emit("number pressed", props.number);
 
     props.userOrder.value = [].concat(props.userOrder.value, [props.number]);
     fetch("/api/order", {

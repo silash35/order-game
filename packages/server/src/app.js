@@ -20,7 +20,16 @@ app.post("/api/order", post);
 
 // Web Sockets
 io.on("connection", (socket) => {
-  console.log("a user connected");
+  socket.on("start game", () => {
+    socket.emit("get sequence", { seq: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] });
+  });
+
+  /*
+  socket.on("number pressed", (msg) => {
+    console.log("number pressed: " + msg);
+    io.emit("number is valide", true);
+  });
+  */
 });
 
 export default httpServer;
