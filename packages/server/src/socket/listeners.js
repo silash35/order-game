@@ -1,5 +1,5 @@
-import { generate, isOrdered, shuffle } from "../logic/sequenceManager.js";
 import fastestTime from "../logic/fastestTime.js";
+import { generate, isOrdered, shuffle } from "../logic/sequenceManager.js";
 
 const connection = (socket) => {
   console.log("user " + socket.id + " connected");
