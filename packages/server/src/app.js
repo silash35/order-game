@@ -4,6 +4,7 @@ import { createServer } from "http";
 import { Server } from "socket.io";
 
 import { get, post } from "./routes/api/order.js";
+import { connection } from "./socket/listeners.js";
 
 // Init
 const app = express();
@@ -19,17 +20,6 @@ app.get("/api/order", get);
 app.post("/api/order", post);
 
 // Web Sockets
-io.on("connection", (socket) => {
-  socket.on("start game", () => {
-    socket.emit("get sequence", { seq: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] });
-  });
-
-  /*
-  socket.on("number pressed", (msg) => {
-    console.log("number pressed: " + msg);
-    io.emit("number is valide", true);
-  });
-  */
-});
+io.on("connection", connection);
 
 export default httpServer;
