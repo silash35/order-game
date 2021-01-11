@@ -8,21 +8,35 @@ const Board = () => {
   const [order, setOrder] = React.useState([]);
   const [gameState, setGameState] = React.useState("default"); // default, playing, victory or lost
 
-  const buttons = [];
+  socket.on("game changed", ({ isOrdered, isComplete }) => {
+    if (isOrdered) {
+      if (isComplete) {
+        setGameState("victory");
+      }
+    } else {
+      setGameState("lost");
+    }
+  });
+
+  // Render
   if (gameState == "playing") {
-    order.forEach((n) => {
-      buttons.push(<BoardButtons number={n} setGameState={setGameState} />);
-    });
+    return (
+      <article className={style.board}>
+        {order.map((n) => {
+          return <BoardButtons number={n} key={n} />;
+        })}
+      </article>
+    );
   } else {
-    buttons.push(
-      <StartGame
-        gameState={{ value: gameState, set: setGameState }}
-        setOrder={setOrder}
-      />
+    return (
+      <article className={style.board}>
+        <StartGame
+          gameState={{ value: gameState, set: setGameState }}
+          setOrder={setOrder}
+        />
+      </article>
     );
   }
-
-  return <article className={style.board}>{buttons}</article>;
 };
 
 export default Board;

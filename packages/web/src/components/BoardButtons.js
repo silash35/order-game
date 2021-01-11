@@ -5,23 +5,15 @@ import style from "./BoardButtons.module.scss";
 const BoardButtons = (props) => {
   const [status, setStatus] = React.useState("none"); // loading, none, right or wrong
 
-  socket.on("game changed", ({ lastNumber, isOrdered, isComplete }) => {
-    if (lastNumber == props.number) {
-      if (isOrdered) {
-        setStatus("right");
-        if (isComplete) {
-          props.setGameState("victory");
-        }
-      } else {
-        setStatus("wrong");
-        props.setGameState("lost");
-      }
+  socket.on(`button ${props.number} pressed`, ({ state, number }) => {
+    if (number == props.number) {
+      setStatus(state);
+      console.log("i am button " + props.number + " and my state is " + status);
     }
   });
 
   const handleClick = () => {
     setStatus("loading");
-
     socket.emit("number pressed", props.number);
   };
 

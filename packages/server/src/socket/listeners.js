@@ -19,13 +19,24 @@ const connection = (socket) => {
     userSeq.push(n);
 
     const gameIsComplete = generate().length == userSeq.length;
+    const userSeqIsOrdered = isOrdered(userSeq);
+
     if (gameIsComplete) {
       fastestTime.update(Date.now() - startTime);
     }
 
+    // Send button state to Board Buttons
+    let buttonState;
+    if (userSeqIsOrdered) {
+      buttonState = "right";
+    } else {
+      buttonState = "wrong";
+    }
+    socket.emit(`button ${n} pressed`, { state: buttonState, number: n });
+
+    // Update Game State for Board
     socket.emit("game changed", {
-      lastNumber: n,
-      isOrdered: isOrdered(userSeq),
+      isOrdered: userSeqIsOrdered,
       isComplete: gameIsComplete,
     });
 
