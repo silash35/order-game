@@ -20,23 +20,19 @@ const Board = () => {
 
   // Render
   if (gameState == "playing") {
-    return (
-      <article className={style.board}>
-        {order.map((n) => {
-          return <BoardButtons number={n} key={n} />;
-        })}
-      </article>
-    );
+    var buttons = order.map((n) => {
+      return <BoardButtons number={n} key={n} />;
+    });
   } else {
-    return (
-      <article className={style.board}>
-        <StartGame
-          gameState={{ value: gameState, set: setGameState }}
-          setOrder={setOrder}
-        />
-      </article>
+    var buttons = (
+      <StartGame
+        gameState={{ value: gameState, set: setGameState }}
+        setOrder={setOrder}
+      />
     );
   }
+
+  return <article className={style.board}>{buttons}</article>;
 };
 
 export default Board;
