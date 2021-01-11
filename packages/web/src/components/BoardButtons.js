@@ -13,8 +13,10 @@ const BoardButtons = (props) => {
   });
 
   const handleClick = () => {
-    setStatus("loading");
-    socket.emit("number pressed", props.number);
+    if (status == "none") {
+      setStatus("loading");
+      socket.emit("number pressed", props.number);
+    }
   };
 
   return (
