@@ -1,9 +1,9 @@
 function FastestTime() {
-  let fastestTime = 9999999999;
+  let fastestTime = undefined;
 
   this.get = () => fastestTime;
   this.update = (newTime) => {
-    if (newTime < fastestTime) {
+    if (fastestTime == undefined || newTime < fastestTime) {
       fastestTime = newTime;
     }
   };
