@@ -11,3 +11,10 @@ body {
   font-weight: 900;
   font-size: 4em;
 }
+
+#root {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+}

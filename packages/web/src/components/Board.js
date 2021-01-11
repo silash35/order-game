@@ -1,5 +1,6 @@
 import React from "react";
 
+import BestMatch from "./BestMatch";
 import style from "./Board.module.scss";
 import BoardButtons from "./BoardButtons";
 import StartGame from "./StartGame";
@@ -32,7 +33,12 @@ const Board = () => {
     );
   }
 
-  return <article className={style.board}>{buttons}</article>;
+  return (
+    <>
+      <BestMatch />
+      <article className={style.board}>{buttons}</article>
+    </>
+  );
 };
 
 export default Board;

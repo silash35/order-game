@@ -7,6 +7,8 @@ const connection = (socket) => {
   let userSeq = [];
   let startTime;
 
+  socket.emit("best match", { fastestTime: fastestTime.get() });
+
   socket.on("game started", () => {
     console.log("user " + socket.id + " has started a game");
 
@@ -21,7 +23,7 @@ const connection = (socket) => {
     const gameIsComplete = generate().length == userSeq.length;
     const userSeqIsOrdered = isOrdered(userSeq);
 
-    if (gameIsComplete) {
+    if (gameIsComplete && userSeqIsOrdered) {
       fastestTime.update(Date.now() - startTime);
     }
 
