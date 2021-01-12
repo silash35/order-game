@@ -15,8 +15,6 @@ const connection = (socket) => {
     userSeq = [];
     socket.emit("sequence", { seq: shuffle(generate()) });
     startTime = Date.now();
-
-    socket.emit("best match", { fastestTime: fastestTime.get() });
   });
 
   socket.on("number pressed", (n) => {
@@ -27,6 +25,7 @@ const connection = (socket) => {
 
     if (gameIsComplete && userSeqIsOrdered) {
       fastestTime.update(Date.now() - startTime);
+      socket.emit("best match", { fastestTime: fastestTime.get() });
     }
 
     // Send button state to Board Buttons
