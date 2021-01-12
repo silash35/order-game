@@ -3,14 +3,9 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
-  padding: 20px;
   width: 80vw;
   height: 60vh;
-
-  background-color: gray;
-  border: 5px solid black;
-  border-radius: 7px;
-
+  min-width: 300px;
   @media (orientation: portrait) {
     height: 80vh;
   }

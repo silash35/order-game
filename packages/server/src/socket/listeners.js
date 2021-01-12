@@ -15,6 +15,8 @@ const connection = (socket) => {
     userSeq = [];
     socket.emit("sequence", { seq: shuffle(generate()) });
     startTime = Date.now();
+
+    socket.emit("best match", { fastestTime: fastestTime.get() });
   });
 
   socket.on("number pressed", (n) => {
