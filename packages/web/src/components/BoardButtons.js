@@ -8,7 +8,6 @@ const BoardButtons = (props) => {
   socket.on(`button ${props.number} pressed`, ({ state, number }) => {
     if (number == props.number) {
       setStatus(state);
-      console.log("i am button " + props.number + " and my state is " + status);
     }
   });
 
