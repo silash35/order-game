@@ -5,4 +5,6 @@ const { name } = require("./package.json");
 export default {
   displayName: name,
   name,
+  testEnvironment: "jest-environment-node",
+  transform: {},
 };

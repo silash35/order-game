@@ -7,6 +7,17 @@ const generate = (length = 10) => {
   return sequence;
 };
 
+const isOrdered = (array) => {
+  const orderedArray = generate(array.length);
+
+  for (var i = 0; i < orderedArray.length; i++) {
+    if (orderedArray[i] !== array[i]) {
+      return false;
+    }
+  }
+  return true;
+};
+
 const shuffle = (array = seq()) => {
   let m = array.length;
   let t;
@@ -22,15 +33,4 @@ const shuffle = (array = seq()) => {
   return array;
 };
 
-const isOrdered = (array) => {
-  const orderedArray = generate(array.length);
-
-  for (var i = 0; i < orderedArray.length; i++) {
-    if (orderedArray[i] !== array[i]) {
-      return false;
-    }
-  }
-  return true;
-};
-
-export { generate, shuffle, isOrdered };
+export { generate, isOrdered, shuffle };

@@ -12,7 +12,7 @@
     "start": "cd packages/server/ && yarn start",
     "predev": "killall -9 node && cd packages/web/ && sh yarn dev &  PID_WEB=$!",
     "dev": "cd packages/server/ && sh yarn dev &  PID_NODE=$!",
-    "test": "jest --passWithNoTests"
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
   },
   "workspaces": {
     "packages": [
