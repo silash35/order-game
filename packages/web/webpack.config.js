@@ -26,7 +26,7 @@ module.exports = {
   },
   plugins: [
     new CopyPlugin({ patterns: [{ from: "static", to: "./" }] }),
-    new HtmlWebpackPlugin({ template: "./src/index.html" }),
+    new HtmlWebpackPlugin({ template: "./src/index.html", cache: false }),
     new MiniCssExtractPlugin(),
     new CleanWebpackPlugin(),
   ],

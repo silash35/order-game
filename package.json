@@ -10,8 +10,8 @@
   "scripts": {
     "build": "cd packages/web/ && yarn build",
     "start": "cd packages/server/ && yarn start",
-    "predev": "cd packages/web/ && yarn build",
-    "dev": "cd packages/server/ && yarn dev",
+    "predev": "killall -9 node && cd packages/web/ && sh yarn dev &  PID_WEB=$!",
+    "dev": "cd packages/server/ && sh yarn dev &  PID_NODE=$!",
     "test": "jest --passWithNoTests"
   },
   "workspaces": {
