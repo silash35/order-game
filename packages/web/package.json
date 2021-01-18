@@ -8,7 +8,8 @@
   "license": "Unlicense",
   "private": true,
   "scripts": {
-    "build": "webpack"
+    "build": "webpack --mode='production'",
+    "dev": "webpack -w --mode='development'"
   },
   "dependencies": {
     "react": "^17.0.1",
