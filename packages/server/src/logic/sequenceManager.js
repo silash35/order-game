@@ -18,7 +18,7 @@ const isOrdered = (array) => {
   return true;
 };
 
-const shuffle = (array = seq()) => {
+const shuffle = (array = generate()) => {
   let m = array.length;
   let t;
   let j;
