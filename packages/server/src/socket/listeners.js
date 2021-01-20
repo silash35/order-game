@@ -13,7 +13,7 @@ const connection = (socket) => {
     console.log("user " + socket.id + " has started a game");
 
     userSeq = [];
-    socket.emit("sequence", { seq: shuffle(generate()) });
+    socket.emit("sequence", { seq: shuffle() });
     startTime = Date.now();
   });
 

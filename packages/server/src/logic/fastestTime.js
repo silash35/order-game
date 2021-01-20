@@ -3,6 +3,10 @@ function FastestTime() {
 
   this.get = () => fastestTime;
   this.update = (newTime) => {
+    if (newTime <= 0) {
+      return;
+    }
+
     if (fastestTime == undefined || newTime < fastestTime) {
       fastestTime = newTime;
     }

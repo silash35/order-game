@@ -1,6 +1,6 @@
-import { generate, isOrdered, shuffle } from "../logic/sequenceManager";
+import { generate, isOrdered, shuffle } from "./sequenceManager";
 
-describe("Testing the Sequence Manager functions separately", () => {
+describe("Sequence Manager functions separately", () => {
   it("should generate sequence", () => {
     expect(generate()).toStrictEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
     expect(generate(1)).toStrictEqual([1]);
@@ -24,7 +24,7 @@ describe("Testing the Sequence Manager functions separately", () => {
   });
 });
 
-describe("Testing the Sequence Manager functions together", () => {
+describe("Sequence Manager functions together", () => {
   it("should generate a ordered sequence", () => {
     expect(isOrdered(generate())).toBe(true);
     expect(isOrdered(generate(100))).toBe(true);
