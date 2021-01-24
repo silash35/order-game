@@ -2,7 +2,7 @@ import {
   arrayIsOrdered,
   generateOrderedArray,
   shuffleArray,
-} from "./arrayHelpers";
+} from "./arrayHelpers.js";
 
 function SequenceManager(length = 10) {
   let scrambledSequence = shuffleArray(generateOrderedArray(length));
