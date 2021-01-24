@@ -14,13 +14,6 @@ function createGame(length = 10) {
   const game = {};
   game.getSeq = () => sequence;
 
-  game.getState = () => {
-    return {
-      isOrdered: userSeqIsOrdered,
-      isComplete: userSeqIsComplete,
-    };
-  };
-
   game.addNumber = (n) => {
     userSeq.push(n);
 
@@ -34,6 +27,13 @@ function createGame(length = 10) {
       buttonState = "wrong";
     }
     return buttonState;
+  };
+
+  game.getState = () => {
+    return {
+      isOrdered: userSeqIsOrdered,
+      isComplete: userSeqIsComplete,
+    };
   };
 
   return game;
