@@ -1,36 +1,41 @@
-const generate = (length = 10) => {
-  let sequence = [];
-  for (let i = 1; i <= length; i++) {
-    sequence.push(i);
-  }
+import {
+  arrayIsOrdered,
+  generateOrderedArray,
+  shuffleArray,
+} from "./arrayHelpers";
 
-  return sequence;
-};
+function SequenceManager(length = 10) {
+  let scrambledSequence = shuffleArray(generateOrderedArray(length));
 
-const isOrdered = (array) => {
-  const orderedArray = generate(array.length);
+  let userSeq = [];
+  let userSeqIsOrdered = true;
+  let userSeqIsComplete = false;
 
-  for (var i = 0; i < orderedArray.length; i++) {
-    if (orderedArray[i] !== array[i]) {
-      return false;
-    }
-  }
-  return true;
-};
+  this.getSeq = () => scrambledSequence;
 
-const shuffle = (array = generate()) => {
-  let m = array.length;
-  let t;
-  let j;
+  this.getState = () => {
+    return {
+      isOrdered: userSeqIsOrdered,
+      isComplete: userSeqIsComplete,
+    };
+  };
 
-  while (m) {
-    j = Math.floor(Math.random() * m--);
-    t = array[m];
-    array[m] = array[j];
-    array[j] = t;
-  }
+  this.addNumber = (n) => {
+    userSeq.push(n);
 
-  return array;
-};
+    userSeqIsOrdered = arrayIsOrdered(userSeq);
+    userSeqIsComplete = userSeq.length == scrambledSequence.length;
+  };
 
-export { generate, isOrdered, shuffle };
+  /*
+    this.reset = () => {
+      scrambledSequence = shuffleArray(generateOrderedArray(length));
+
+      userSeq = [];
+      userSeqIsOrdered = true;
+      userSeqIsComplete = false;
+    };
+  */
+}
+
+export default SequenceManager;

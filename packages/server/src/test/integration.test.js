@@ -5,7 +5,7 @@
 import { io } from "socket.io-client";
 
 import http from "../app";
-import { generate } from "../logic/sequenceManager";
+import { generateOrderedArray as generate } from "../logic/arrayHelpers";
 
 const PORT = 9000;
 let socket;

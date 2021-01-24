@@ -1,4 +1,8 @@
-import { generate, isOrdered, shuffle } from "./sequenceManager";
+import {
+  arrayIsOrdered as isOrdered,
+  generateOrderedArray as generate,
+  shuffleArray as shuffle,
+} from "./arrayHelpers";
 
 describe("Sequence Manager functions separately", () => {
   it("should generate sequence", () => {
@@ -20,7 +24,7 @@ describe("Sequence Manager functions separately", () => {
     expect(shuffle(orderedArray).length).toBe(orderedArray.length);
     expect(shuffle(orderedArray)).toContain(1);
     expect(shuffle(orderedArray)).not.toContain(0);
-    expect(shuffle()).not.toBe(shuffle(orderedArray));
+    expect(shuffle(generate())).not.toBe(shuffle(orderedArray));
   });
 });
 
@@ -32,7 +36,7 @@ describe("Sequence Manager functions together", () => {
   });
 
   it("should shuffle the generated Array", () => {
-    expect(shuffle(generate()).length).toBe(generate().length);
+    expect(shuffle(generate(10)).length).toBe(generate().length);
     expect(shuffle(generate(100))).toContain(100);
     expect(shuffle(generate(7))).not.toContain(0);
     expect(shuffle(generate(15))).not.toBe(shuffle(generate(15)));

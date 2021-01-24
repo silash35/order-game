@@ -1,36 +1,35 @@
 import fastestTime from "../logic/fastestTime.js";
-import { generate, isOrdered, shuffle } from "../logic/sequenceManager.js";
+import SequenceManager from "../logic/sequenceManager.js";
 
 const connection = (socket) => {
   console.log("user " + socket.id + " connected");
 
-  let userSeq = [];
   let startTime;
 
+  let sequenceManager;
   socket.emit("best match", { fastestTime: fastestTime.get() });
 
   socket.on("game started", () => {
     console.log("user " + socket.id + " has started a game");
 
-    userSeq = [];
-    socket.emit("sequence", { seq: shuffle() });
+    sequenceManager = new SequenceManager();
+    socket.emit("sequence", { seq: sequenceManager.getSeq() });
     startTime = Date.now();
   });
 
   socket.on("number pressed", (n) => {
-    userSeq.push(n);
+    sequenceManager.addNumber(n);
 
-    const gameIsComplete = generate().length == userSeq.length;
-    const userSeqIsOrdered = isOrdered(userSeq);
+    let { isOrdered, isComplete } = sequenceManager.getState();
 
-    if (gameIsComplete && userSeqIsOrdered) {
+    if (isOrdered && isComplete) {
       fastestTime.update(Date.now() - startTime);
       socket.emit("best match", { fastestTime: fastestTime.get() });
     }
 
     // Send button state to Board Buttons
     let buttonState;
-    if (userSeqIsOrdered) {
+    if (isOrdered) {
       buttonState = "right";
     } else {
       buttonState = "wrong";
@@ -39,11 +38,9 @@ const connection = (socket) => {
 
     // Update Game State for Board
     socket.emit("game changed", {
-      isOrdered: userSeqIsOrdered,
-      isComplete: gameIsComplete,
+      isOrdered,
+      isComplete,
     });
-
-    console.log("user " + socket.id + " seq is " + userSeq);
   });
 };
 
