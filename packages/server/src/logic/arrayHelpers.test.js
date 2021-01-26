@@ -4,8 +4,8 @@ import {
   shuffleArray as shuffle,
 } from "./arrayHelpers";
 
-describe("Sequence Manager functions separately", () => {
-  it("should generate sequence", () => {
+describe("array Helpers separately", () => {
+  it("should generate a ordered Array", () => {
     expect(generate()).toStrictEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
     expect(generate(1)).toStrictEqual([1]);
     expect(generate(5)).toStrictEqual([1, 2, 3, 4, 5]);
@@ -28,7 +28,7 @@ describe("Sequence Manager functions separately", () => {
   });
 });
 
-describe("Sequence Manager functions together", () => {
+describe("array Helpers together", () => {
   it("should generate a ordered sequence", () => {
     expect(isOrdered(generate())).toBe(true);
     expect(isOrdered(generate(100))).toBe(true);
