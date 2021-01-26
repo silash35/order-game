@@ -1,9 +1,9 @@
 import React from "react";
 
-import BestMatch from "./BestMatch";
+import BestMatch from "../BestMatch";
+import BoardButtons from "../BoardButtons";
+import StartGame from "../StartGame";
 import style from "./Board.module.scss";
-import BoardButtons from "./BoardButtons";
-import StartGame from "./StartGame";
 
 const Board = () => {
   const [order, setOrder] = React.useState([]);
