@@ -10,8 +10,7 @@
   "scripts": {
     "build": "cd packages/web/ && yarn build",
     "start": "cd packages/server/ && yarn start",
-    "predev": "killall -9 node && cd packages/web/ && sh yarn dev &  PID_WEB=$!",
-    "dev": "cd packages/server/ && sh yarn dev &  PID_NODE=$!",
+    "dev": "concurrently \"cd packages/web/ && yarn dev\" \"cd packages/server/ && yarn dev\"",
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
   },
   "workspaces": {
@@ -24,6 +23,7 @@
   },
   "devDependencies": {
     "@types/jest": "^26.0.20",
+    "concurrently": "^5.3.0",
     "jest": "^26.6.3"
   }
 }
