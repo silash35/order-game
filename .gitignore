@@ -1,8 +1,15 @@
 packages/server/public/
 !*.gitkeep
 
+# Yarn 2
+.yarn/*
+#!.yarn/cache
+!.yarn/releases
+#!.yarn/plugins
+#!.yarn/sdks
+#!.yarn/versions
+
 # Dependency directories
-.yarn/
 node_modules/
 jspm_packages/
 
