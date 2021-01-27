@@ -9,7 +9,7 @@
   "browserslist": "> 0.25%, not dead",
   "scripts": {
     "build": "yarn workspace web build",
-    "start": "yarn workspace server yarn start",
+    "start": "yarn workspace server start",
     "dev": "concurrently \"yarn workspace web dev\" \"yarn workspace server dev\"",
     "pretest": "yarn workspace server test",
     "test": "yarn workspace web test"
