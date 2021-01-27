@@ -8,10 +8,11 @@
   "private": true,
   "browserslist": "> 0.25%, not dead",
   "scripts": {
-    "build": "cd packages/web/ && yarn build",
-    "start": "cd packages/server/ && yarn start",
-    "dev": "concurrently \"cd packages/web/ && yarn dev\" \"cd packages/server/ && yarn dev\"",
-    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
+    "build": "yarn workspace web build",
+    "start": "yarn workspace server yarn start",
+    "dev": "concurrently \"yarn workspace web dev\" \"yarn workspace server dev\"",
+    "pretest": "yarn workspace server test",
+    "test": "yarn workspace web test"
   },
   "workspaces": {
     "packages": [
@@ -23,7 +24,6 @@
   },
   "devDependencies": {
     "@types/jest": "^26.0.20",
-    "concurrently": "^5.3.0",
-    "jest": "^26.6.3"
+    "concurrently": "^5.3.0"
   }
 }
