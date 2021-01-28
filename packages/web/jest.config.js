@@ -1,11 +1,15 @@
 const { name } = require("./package.json");
 
 module.exports = {
+  // name
   displayName: name,
   name,
-  testEnvironment: "jest-environment-jsdom",
+  // options
   verbose: true,
   silent: true,
-  clearMocks: true,
-  transform: {},
+  // test config
+  testEnvironment: "jest-environment-jsdom",
+  moduleNameMapper: {
+    ".(css|less|sass|scss)": "identity-obj-proxy",
+  },
 };
