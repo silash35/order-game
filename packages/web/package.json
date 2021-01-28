@@ -10,7 +10,7 @@
   "scripts": {
     "build": "webpack --mode='production'",
     "dev": "webpack -w --mode='development'",
-    "test": "node --experimental-vm-modules node_modules/.bin/jest"
+    "test": "NODE_OPTIONS=--experimental-vm-modules yarn jest"
   },
   "dependencies": {
     "react": "^17.0.1",
