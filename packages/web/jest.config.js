@@ -6,7 +6,6 @@ module.exports = {
   name,
   // options
   verbose: true,
-  silent: true,
   // test config
   testEnvironment: "jest-environment-jsdom",
   moduleNameMapper: {

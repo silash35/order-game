@@ -11,7 +11,7 @@
     "build": "yarn workspace web build",
     "start": "yarn workspace server start",
     "dev": "concurrently \"yarn workspace web dev\" \"yarn workspace server dev\"",
-    "test": "yarn workspaces foreach run test"
+    "test": "yarn workspace server test && yarn workspace web test"
   },
   "workspaces": {
     "packages": [
