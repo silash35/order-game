@@ -23,7 +23,6 @@
   },
   "devDependencies": {
     "@types/jest": "^26.0.20",
-    "concurrently": "^5.3.0",
-    "defer-to-connect": "^2.0.0"
+    "concurrently": "^5.3.0"
   }
 }
