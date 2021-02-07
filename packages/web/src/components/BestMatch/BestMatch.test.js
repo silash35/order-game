@@ -14,7 +14,7 @@ describe("BestMatch react component", () => {
     expect(render(<BestMatch time={time} />).container).toEqual(emptyComponent);
   });
 
-  it("should be print the given time", () => {
+  it("should print the given time", () => {
     const { getByText, queryByText } = render(<BestMatch time={5328} />);
     getByText("5328", { exact: false });
 
