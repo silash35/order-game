@@ -1,23 +1,24 @@
-import { jest } from "@jest/globals";
+import "@testing-library/jest-dom/extend-expect";
+
 import { render } from "@testing-library/react";
 import React from "react";
-
-// mock socket.io
-const socket = {};
-socket.on = jest.fn(() => {});
-global.socket = socket;
 
 import BestMatch from "./index";
 
 describe("BestMatch react component", () => {
-  it("should be null on beginning", () => {
-    const { queryByText } = render(<BestMatch />);
-    expect(queryByText("milliseconds")).toBeNull();
-  });
-  it("should be null on beginning", () => {
-    const { queryByText } = render(<BestMatch />);
+  it("should be empty on if there is no time", () => {
+    const emptyComponent = render(<></>).container;
+    const time = undefined;
 
-    console.log(socket.on.mock.calls[0]);
-    expect(1).not.toBe(2);
+    expect(render(<BestMatch />).container).toEqual(emptyComponent);
+    expect(render(<BestMatch time={time} />).container).toEqual(emptyComponent);
+  });
+
+  it("should be print the given time", () => {
+    const { getByText, queryByText } = render(<BestMatch time={5328} />);
+    getByText("5328", { exact: false });
+
+    expect(queryByText("5328", { exact: false })).toBeInTheDocument();
+    expect(queryByText("5329", { exact: false })).not.toBeInTheDocument();
   });
 });

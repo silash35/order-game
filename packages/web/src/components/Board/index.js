@@ -8,6 +8,11 @@ import style from "./Board.module.scss";
 const Board = () => {
   const [order, setOrder] = React.useState([]);
   const [gameState, setGameState] = React.useState("default"); // default, playing, victory or lost
+  const [time, setTime] = React.useState(undefined);
+
+  socket.on("best match", ({ fastestTime }) => {
+    setTime(fastestTime);
+  });
 
   socket.on("game changed", ({ isOrdered, isComplete }) => {
     if (isOrdered) {
@@ -35,7 +40,7 @@ const Board = () => {
 
   return (
     <>
-      <BestMatch />
+      <BestMatch time={time} />
       <article className={style.board}>{buttons}</article>
     </>
   );
