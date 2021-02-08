@@ -8,10 +8,12 @@
   "private": true,
   "browserslist": "> 0.25%, not dead",
   "scripts": {
-    "build": "cd packages/web/ && yarn build",
-    "start": "cd packages/server/ && yarn start",
-    "dev": "concurrently \"cd packages/web/ && yarn dev\" \"cd packages/server/ && yarn dev\"",
-    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
+    "build": "yarn workspace web build",
+    "start": "yarn workspace server start",
+    "dev": "concurrently \"yarn workspace web dev\" \"yarn workspace server dev\"",
+    "test": "yarn workspace server test && yarn workspace web test",
+    "cytest": "yarn build && concurrently --success first --kill-others \"yarn start\" \"wait-on http://localhost:9000 && cypress run\"",
+    "cypress": "cypress"
   },
   "workspaces": {
     "packages": [
@@ -24,6 +26,7 @@
   "devDependencies": {
     "@types/jest": "^26.0.20",
     "concurrently": "^5.3.0",
-    "jest": "^26.6.3"
+    "cypress": "^6.4.0",
+    "wait-on": "^5.2.1"
   }
 }

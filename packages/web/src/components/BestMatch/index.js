@@ -2,13 +2,7 @@ import React from "react";
 
 import style from "./BestMatch.module.scss";
 
-const BestMatch = () => {
-  const [time, setTime] = React.useState(undefined);
-
-  socket.on("best match", ({ fastestTime }) => {
-    setTime(fastestTime);
-  });
-
+const BestMatch = ({ time }) => {
   if (time == undefined) {
     return <></>;
   } else {

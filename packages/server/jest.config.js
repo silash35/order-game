@@ -6,5 +6,7 @@ export default {
   displayName: name,
   name,
   testEnvironment: "jest-environment-node",
+  verbose: true,
+  silent: true,
   transform: {},
 };

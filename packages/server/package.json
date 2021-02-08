@@ -1,5 +1,5 @@
 {
-  "name": "@order-game/server",
+  "name": "server",
   "version": "1.0.0",
   "description": "The Backend from the Order-Game",
   "main": "src/index.js",
@@ -10,7 +10,8 @@
   "type": "module",
   "scripts": {
     "start": "node src/index.js",
-    "dev": "nodemon src/index.js"
+    "dev": "nodemon src/index.js",
+    "test": "NODE_OPTIONS=--experimental-vm-modules yarn jest"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
@@ -22,6 +23,7 @@
     "eslint-config-prettier": "^7.1.0",
     "eslint-plugin-prettier": "^3.3.0",
     "eslint-plugin-simple-import-sort": "^7.0.0",
+    "jest": "^26.6.3",
     "nodemon": "^2.0.6",
     "prettier": "^2.2.1",
     "socket.io-client": "^3.1.0"
