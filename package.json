@@ -11,7 +11,10 @@
     "build": "yarn workspace web build",
     "start": "yarn workspace server start",
     "dev": "concurrently \"yarn workspace web dev\" \"yarn workspace server dev\"",
-    "test": "yarn workspace server test && yarn workspace web test"
+    "test": "yarn workspace server test && yarn workspace web test",
+    "precytest": "yarn build",
+    "cytest": "concurrently --kill-others \"yarn start\" \"wait-on http://localhost:9000 && cypress run\"",
+    "cypress": "cypress"
   },
   "workspaces": {
     "packages": [
@@ -23,6 +26,8 @@
   },
   "devDependencies": {
     "@types/jest": "^26.0.20",
-    "concurrently": "^5.3.0"
+    "concurrently": "^5.3.0",
+    "cypress": "^6.4.0",
+    "wait-on": "^5.2.1"
   }
 }

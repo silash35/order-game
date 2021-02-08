@@ -13,6 +13,10 @@ packages/server/public/
 node_modules/
 jspm_packages/
 
+# cypress
+cypress/*
+!cypress/integration
+
 # Logs
 logs
 *.log
