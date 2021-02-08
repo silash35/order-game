@@ -12,7 +12,7 @@
     "start": "yarn workspace server start",
     "dev": "concurrently \"yarn workspace web dev\" \"yarn workspace server dev\"",
     "test": "yarn workspace server test && yarn workspace web test",
-    "cytest": "yarn build && concurrently -s --kill-others \"yarn start\" \"wait-on http://localhost:9000 && cypress run\"",
+    "cytest": "yarn build && concurrently --success first --kill-others \"yarn start\" \"wait-on http://localhost:9000 && cypress run\"",
     "cypress": "cypress"
   },
   "workspaces": {
