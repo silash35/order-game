@@ -6,9 +6,15 @@ import StartGame from "../StartGame";
 import style from "./Board.module.scss";
 
 const Board = () => {
+  // States
   const [order, setOrder] = React.useState([]);
   const [gameState, setGameState] = React.useState("default"); // default, playing, victory or lost
   const [time, setTime] = React.useState(undefined);
+
+  // Socket events
+  socket.on("sequence", ({ seq }) => {
+    setOrder(seq);
+  });
 
   socket.on("best match", ({ fastestTime }) => {
     setTime(fastestTime);
@@ -31,10 +37,7 @@ const Board = () => {
     });
   } else {
     var buttons = (
-      <StartGame
-        gameState={{ value: gameState, set: setGameState }}
-        setOrder={setOrder}
-      />
+      <StartGame gameState={{ value: gameState, set: setGameState }} />
     );
   }
 

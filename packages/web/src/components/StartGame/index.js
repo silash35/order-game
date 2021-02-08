@@ -2,18 +2,14 @@ import React from "react";
 
 import style from "./StartGame.module.scss";
 
-const StartGame = (props) => {
-  socket.on("sequence", ({ seq }) => {
-    props.setOrder(seq);
-  });
-
+const StartGame = ({ gameState }) => {
   const handleClick = () => {
     socket.emit("game started");
-    props.gameState.set("playing");
+    gameState.set("playing");
   };
 
   let text;
-  switch (props.gameState.value) {
+  switch (gameState.value) {
     case "victory":
       text = "You Win! Play Again?";
       break;
